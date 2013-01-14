@@ -7,7 +7,7 @@
 
 
 //--------------------------------------------------//
-//  	######## ########    ###    ##     ##		//
+//		######## ########    ###    ##     ##		//
 //   	   ##    ##         ## ##   ###   ###		//
 //   	   ##    ##        ##   ##  #### ####		//
 //   	   ##    ######   ##     ## ## ### ##		//
@@ -116,11 +116,6 @@ import edu.wpi.first.wpilibj.Joystick; //import the classes for the Joystick
 import edu.wpi.first.wpilibj.RobotDrive //import the classes for RobotDrive
 import edu.wpi.first.wpilibj.Watchdog; //import the classes for the Watchdog
 
-import edu.wpi.first.wpilibj.camera.AxisCamera; //import the classes for the AxisCamera
-import edu.wpi.first.wpilibj.camera.AxisCameraException; //import the classes for the AxisCamera
-import edu.wpi.first.wpilibj.image.ColorImage;
-import edu.wpi.first.wpilibj.image.NIVisionException;
-
 
 
 /**
@@ -147,13 +142,6 @@ public class RobotTemplate extends SimpleRobot //This function is called once ea
 
 //******Variable For The Drive Type******End
 
-//******Variable For The Camera******Start
-
-		AxisCamera cam; //declareing the camera
-
-//******Variable For The Camera******End
-
-
 
 
 
@@ -169,10 +157,6 @@ public class RobotTemplate extends SimpleRobot //This function is called once ea
 
 //				compressor.start(); //start the compressor (left in for simplicity in case we decide to use it)
 				Timer.delay(10.0); //delay of some sort (leaving it in so that it doesn't cause any conflicts
-				cam = AxisCamera.getInstance(); //initialize the Axis Camera
-				cam.writeResolution(AxisCamera.ResolutionT.k160x120); //Specify the camera resolution (dont set this to high unless you like lag)
-//        		cam.writeColorLevel(1); //specify the color level
-				cam.writeBrightness(0); //specify the camera brightness
 
 			}
 
@@ -193,38 +177,6 @@ public class RobotTemplate extends SimpleRobot //This function is called once ea
     	{
 
 
-//******Camera******Start (not sure what this does)
-						ColorImage image = null;
-							try {
-									if (cam.freshImage())
-										{
-											// && turnController.onTarget()) {
-											image = cam.getImage();
-										}
-								}
-							catch (NIVisionException ex)
-								{
-									ex.printStackTrace();
-								}
-							catch (AxisCameraException ex)
-								{
-									ex.printStackTrace();
-								}
-							finally
-								{
-									try
-										{
-											if (image != null)
-												{
-													image.free();
-												}
-										}
-									catch (NIVisionException ex)
-										{
-
-										}
-								}
-//******Camera******End
 
 //******Drive******Start
 
